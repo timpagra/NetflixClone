@@ -18,3 +18,15 @@ Technologies
 4. Git
 
 Commit and push frequently - Open a pull request after working on a feature.
+
+<!-- Discover Movie Endpoint -->
+https://api.themoviedb.org/3/discover/movie?api_key=36627da5bcd13d079113933c7fc9fb64&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1
+
+<!-- Genre Endpoint -->
+https://api.themoviedb.org/3/genre/movie/list?api_key=36627da5bcd13d079113933c7fc9fb64&language=en-US
+
+<!-- Search by specific genre -->
+
+
+<!-- Search by a search term -->
+https://api.themoviedb.org/3/search/movie?api_key=36627da5bcd13d079113933c7fc9fb64&language=en-US&query=spiderman&page=1&include_adult=false
