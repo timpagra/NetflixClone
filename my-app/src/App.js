@@ -11,7 +11,7 @@ function App() {
   const [searchResult, setSearchResult] = useState([]);
   const [genreMovies, setGenreMovies] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState("");
-  const [page, setPage] = useState("");
+  // const [page, setPage] = useState("");
 
   useEffect(async () => {
     const discoverPromise =  axios.get("/getDiscoverList");

@@ -1,7 +1,6 @@
 require("dotenv").config();
 const express = require("express");
 const {apiFunc} = require("./src/apis");
-const fetch = require("node-fetch");
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -16,7 +15,7 @@ app.use("/", (req, res, next) => {
 });
 
 // Get the list of available genres
-app.get("/getGenreList", async (req, res, next) => {
+app.get("/getGenreList", async (req, res) => {
   try {
     const endPoint = "https://api.themoviedb.org/3/genre/movie/list";
     const apiKey = process.env.API_KEY;
@@ -90,7 +89,7 @@ app.get("/ping", (req, res) => {
 });
 
 // error handler
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};
