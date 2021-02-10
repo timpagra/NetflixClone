@@ -18,7 +18,7 @@ app.use("/", (req, res, next) => {
 app.get("/getGenreList", async (req, res) => {
   try {
     const endPoint = "https://api.themoviedb.org/3/genre/movie/list";
-    const apiKey = process.env.API_KEY;
+    const apiKey = process.env.REACT_APP_API_KEY;
     const params = "language=en-US";
     // make call
     const genres = await apiFunc(endPoint, apiKey, params);
@@ -34,7 +34,7 @@ app.get("/getGenreList", async (req, res) => {
 app.get("/getSearchTerm", async (req, res) => {
   try {
     const endPoint = "https://api.themoviedb.org/3/search/movie";
-    const apiKey = process.env.API_KEY;
+    const apiKey = process.env.REACT_APP_API_KEY;
     const searchQuery = req.query.query;
     const params = `language=en-US&query=${searchQuery}&page=1&include_adult=false`;
     // make call
@@ -52,7 +52,7 @@ app.get("/getSearchTerm", async (req, res) => {
 app.get("/getSelectedGenre", async (req, res) => {
   try {
     const endPoint = "https://api.themoviedb.org/3/discover/movie";
-    const apiKey = process.env.API_KEY;
+    const apiKey = process.env.REACT_APP_API_KEY;
     const genreId = req.query.genreId;
     const params = `language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genreId}`;
     // make call
@@ -70,7 +70,7 @@ app.get("/getSelectedGenre", async (req, res) => {
 app.get("/getDiscoverList", async (req, res) => {
   try {
     const endPoint = "https://api.themoviedb.org/3/discover/movie";
-    const apiKey = process.env.API_KEY;
+    const apiKey = process.env.REACT_APP_API_KEY;
     const params = "language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=2";
 
     // api call
