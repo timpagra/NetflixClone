@@ -1,4 +1,4 @@
-const fetch = require("node-fetch");
+const axios = require("axios");
 
 /**
  * Makes an api call to a specified path with some params
@@ -9,8 +9,8 @@ const fetch = require("node-fetch");
  */
 exports.apiFunc = async function (path, api_key, params) {
   try {
-    const response = await fetch(`${path}?api_key=${api_key}&${params}`);
-    const data = await response.json();
+    const response = await axios(`${path}?api_key=${api_key}&${params}`, { headers: { Accept: "application/json" } } );
+    const data = response.data;
     return data;
   } catch (error) {
     return error;

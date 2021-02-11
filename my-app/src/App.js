@@ -11,27 +11,30 @@ function App() {
   const [searchResult, setSearchResult] = useState([]);
   const [genreMovies, setGenreMovies] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState("");
-  // const [page, setPage] = useState("");
+  const [page, setPage] = useState("");
 
   useEffect(async () => {
-    const discoverPromise =  axios.get("/getDiscoverList");
-    const genrePromise =  axios.get("/getGenreList");
+    const discoverPromise =  axios.get("/.netlify/functions/discover");
+    const genrePromise =  axios.get("/.netlify/functions/genre");
+
     const [discover, genre] = await Promise.all([discoverPromise, genrePromise]);
-    setGenreList(genre.data.genres);
-    setDiscover(discover.data);
+    console.log(genre.data.genres.genres);
+
+    setGenreList(genre.data.genres.genres);
+    setDiscover(discover.data.genres.results);
   }, []);
 
   // conditionally fetch search results
-  useEffect(async () => {
-    const searchPromise = await axios.get("/getSearchTerm", { params : { query: search}});
-    setSearchResult(searchPromise.data.results);
-  }, [search]);
+  // useEffect(async () => {
+  //   const searchPromise = await axios.get("/getSearchTerm", { params : { query: search}});
+  //   setSearchResult(searchPromise.data.results);
+  // }, [search]);
 
-  // conditionally fetch results based on genre selected
-  useEffect(async () => {
-    const genrePromise = await axios.get("/getSelectedGenre", { params : { with_genres: selectedGenre.toString()}});
-    setGenreMovies(genrePromise.data.results);
-  }, [selectedGenre]);
+  // // conditionally fetch results based on genre selected
+  // useEffect(async () => {
+  //   const genrePromise = await axios.get("/getSelectedGenre", { params : { with_genres: selectedGenre.toString()}});
+  //   setGenreMovies(genrePromise.data.results);
+  // }, [selectedGenre]);
 
   // Update the state val for the search term a user may have
   const handleUpdateSearch = (value) => {
@@ -46,15 +49,18 @@ function App() {
 
   return (
     <div className="App">
-      <SearchAppBar cardDetails={discover} 
+      <SearchAppBar 
+        cardDetails={discover} 
         genre={genreList} 
-        updateSearch={handleUpdateSearch} 
-        searchResult={searchResult}
-        genreMovies={genreMovies}
-        updateSelectedGenre={handleGenreSelected}
       />
     </div>
   );
 }
+
+
+// updateSearch={handleUpdateSearch} 
+//         searchResult={searchResult}
+//         genreMovies={genreMovies}
+//         updateSelectedGenre={handleGenreSelected}
 
 export default App;
