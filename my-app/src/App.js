@@ -7,11 +7,11 @@ import axios from "axios";
 function App() {
   const [genreList, setGenreList] = useState([]);
   const [discover, setDiscover] = useState([]);
-  const [search, setSearch] = useState("");
-  const [searchResult, setSearchResult] = useState([]);
-  const [genreMovies, setGenreMovies] = useState([]);
-  const [selectedGenre, setSelectedGenre] = useState("");
-  const [page, setPage] = useState("");
+  // const [search, setSearch] = useState("");
+  // const [searchResult, setSearchResult] = useState([]);
+  // const [genreMovies, setGenreMovies] = useState([]);
+  // const [selectedGenre, setSelectedGenre] = useState("");
+  // const [page, setPage] = useState("");
 
   useEffect(async () => {
     const discoverPromise =  axios.get("/.netlify/functions/discover");
@@ -37,15 +37,15 @@ function App() {
   // }, [selectedGenre]);
 
   // Update the state val for the search term a user may have
-  const handleUpdateSearch = (value) => {
-    console.log("The event value ", value);
-    return setSearch(value);
-  };
+  // const handleUpdateSearch = (value) => {
+  //   console.log("The event value ", value);
+  //   return setSearch(value);
+  // };
 
-  // Update the state value for the selected genre
-  const handleGenreSelected = (value) => {
-    return setSelectedGenre(value);
-  };
+  // // Update the state value for the selected genre
+  // const handleGenreSelected = (value) => {
+  //   return setSelectedGenre(value);
+  // };
 
   return (
     <div className="App">
