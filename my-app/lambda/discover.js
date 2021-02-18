@@ -1,6 +1,8 @@
 // import apiFunc from "../src/apis";
 const {apiFunc} = require("../src/apis");
 
+// This is a fun comment
+
 exports.handler = async function (event, context) {
   try {
     const endPoint = "https://api.themoviedb.org/3/discover/movie";
